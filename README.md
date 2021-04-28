@@ -21,6 +21,7 @@
 모델은 7일(Day 0~ Day6) 동안의 데이터를 인풋으로 활용하여, 향후 2일(Day7 ~ Day8) 동안의 30분 간격의 발전량(TARGET)을 예측해야 한다. 
 
 (1일당 48개씩 총 96개 타임스텝에 대한 예측)
+
 <br/>
 
 ### 구축한 예측모델
@@ -47,7 +48,7 @@
 |T (Temperature)|기온|
 |Target| 태양광 발전량|
 
-<br/>
+
 
 * 파생변수
 
@@ -63,7 +64,9 @@
 모델별로 Pinball loss를 정의하는 방식에 차이가 있음.
 
 1) XGBoost
+
 <br/>
+
 * loss 정의
 ```python
 def gradient(predt: np.ndarray, dtrain: xgb.DMatrix) -> np.ndarray:
@@ -83,6 +86,7 @@ def quantile_loss(predt: np.ndarray,
     hess = hessian(predt, dtrain)
     return grad, hess
 ```
+
 <br/>
 
 * model 생성
@@ -95,9 +99,13 @@ model = xgb.train({'tree_method': 'gpu_hist'},
 ```
 
 2) LightGBM
+
 <br/>
+
 * Quantile Loss가 lightgbm 라이브러리 내부에 내장되어 있음.
+
 <br/>
+
 * model 생성
 ```python
 model = LGBMRegressor(objective='quantile', alpha=q, max_depth=128, boosting='gbdt',
@@ -106,9 +114,13 @@ model = LGBMRegressor(objective='quantile', alpha=q, max_depth=128, boosting='gb
 model.fit(X_train, Y_train, eval_metric = ['quantile'], 
           eval_set=[(X_valid, Y_valid)], early_stopping_rounds=512, verbose=500)
 ```
+
 <br/>
+
 3) 1D CNN, Neural Network
+
 <br/>
+
 * loss 정의
 ```python
 def quantile_loss(pred, gt, quantile):
@@ -119,7 +131,9 @@ def quantile_loss(pred, gt, quantile):
     sum_loss = torch.mean(loss)
     return sum_loss
 ```
+
 <br/>
+
 * loss 사용
 ```python
 loss = quantile_loss(output, target, quantile)
