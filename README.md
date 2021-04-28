@@ -1,6 +1,8 @@
-# 태양광 발전량 예측모델
+## 태양광 발전량 예측모델
+- 데이터 source: [[데이콘] 태양광 발전량 예측 AI 경진대회](https://dacon.io/competitions/official/235680/overview/description/)
 
-## 주제
+
+### 주제
 
 예시로 제시된 지역의 기상 데이터와 과거 발전량 데이터를 활용하여, 시간대별 태양광 발전량을 예측
 
@@ -8,7 +10,7 @@
 
 
 
-## task 설명
+### task 설명
 
 태양광 발전은 매일의 기상 상황과 계절에 따른 일사량의 영향을 받는다. 이에 대한 예측이 가능하다면 보다 원활하게 전력 수급 계획을 세우는 것이 가능하다
  
@@ -20,7 +22,7 @@
 (1일당 48개씩 총 96개 타임스텝에 대한 예측)
 
 
-## 구축한 예측모델
+### 구축한 예측모델
 
 1. *LightGBM, XGBoost*: boosting 계열의 tree 기반 ensemble model (데이터 iid 가정)
 
@@ -29,10 +31,8 @@
 3. *Neural Network*: linear layer로 구성된 neural network 기반의 모델
 
 
-## 데이터 source: [[데이콘] 태양광 발전량 예측 AI 경진대회](https://dacon.io/competitions/official/235680/overview/description/)
 
-
-## 변수 설명
+### 변수 설명
 * 기본 변수
 
 |변수|설명|
@@ -47,6 +47,7 @@
 |Target ($Kw$)| 태양광 발전량|
 
 * 파생변수
+
 |변수|설명|
 |:---:|:---:|
 |GHI (Global Horizontal Irradiance ($W/m^2$))| 전체 도달 태양에너지 량|
@@ -54,7 +55,7 @@
 
 
 
-## Loss Function: Pinball Loss (=Quantile Loss)
+### Loss Function: Pinball Loss (=Quantile Loss)
 
 모델별로 Pinball loss를 정의하는 방식에 차이가 있음.
 
