@@ -39,18 +39,18 @@
 |:---:|:---:|
 |Hour|시간|
 |Minute|분|
-|DHI (Diffuse Horizontal Irradiance($W/m^2$))| 태양광선이 대기 통과하는 동안 산란되어 도달하는 햇볕|
-|DNI (Direct Normal Irradiance($W/m^2$))|태양으로부터 지표에 직접 도달하는 햇볕|
-|WS (Wind Speed($m/s$))|풍속|
-|RH(Relative Humidity(%))|상대습도|
-|T (Temperature ($&deg;C$))|기온|
-|Target ($Kw$)| 태양광 발전량|
+|DHI (Diffuse Horizontal Irradiance)| 태양광선이 대기 통과하는 동안 산란되어 도달하는 햇볕|
+|DNI (Direct Normal Irradiance)|태양으로부터 지표에 직접 도달하는 햇볕|
+|WS (Wind Speed)|풍속|
+|RH(Relative Humidity)|상대습도|
+|T (Temperature)|기온|
+|Target| 태양광 발전량|
 
 * 파생변수
 
 |변수|설명|
 |:---:|:---:|
-|GHI (Global Horizontal Irradiance ($W/m^2$))| 전체 도달 태양에너지 량|
+|GHI (Global Horizontal Irradiance)| 전체 도달 태양에너지 량|
 |theta | 태양과 지면 간의 각도|
 
 
