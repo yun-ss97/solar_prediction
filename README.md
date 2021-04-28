@@ -65,8 +65,6 @@
 
 1) XGBoost
 
-<br/>
-
 * loss 정의
 ```python
 def gradient(predt: np.ndarray, dtrain: xgb.DMatrix) -> np.ndarray:
@@ -100,11 +98,9 @@ model = xgb.train({'tree_method': 'gpu_hist'},
 
 2) LightGBM
 
-<br/>
 
 * Quantile Loss가 lightgbm 라이브러리 내부에 내장되어 있음.
 
-<br/>
 
 * model 생성
 ```python
@@ -118,8 +114,6 @@ model.fit(X_train, Y_train, eval_metric = ['quantile'],
 <br/>
 
 3) 1D CNN, Neural Network
-
-<br/>
 
 * loss 정의
 ```python
